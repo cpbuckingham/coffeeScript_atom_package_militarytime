@@ -32,17 +32,10 @@ class Journal
 
   formattedTimeForDate: (date) ->
     hours = date.getHours()
-    if hours >= 12
-      hours = hours - 12 if hours > 12
-      suffix = "PM"
-    else
-      hours = 12 if hours is 0
-      suffix = "AM"
-
     minutes = date.getMinutes()
     minutes = "0" + minutes if minutes < 10
 
-    "#{hours}:#{minutes} #{suffix}"
+    "#{hours}:#{minutes}"
 
   getPath: ->
     atom.config.get('journal.path').replace('~', process.env.HOME ? process.env.USERPROFILE)
